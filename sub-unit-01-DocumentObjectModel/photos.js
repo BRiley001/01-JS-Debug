@@ -72,24 +72,29 @@ function previewFive() {
    lastFigure.style.position = "absolute";
    lastFigure.style.right = "45px";
    lastFigure.style.top = "67px";
+
    var lastImage = document.createElement("img");
    lastImage.width = "240";
    lastImage.height = "135";
+
    var articleElem = document.getElementsByTagName("article")[0];
+
    lastFigure.appendChild(lastImage);
-   //articleElem.appendChild(lastFigure);
    articleElem.insertBefore(lastFigure, document.getElementById("rightarrow"));
+
    var firstFigure = lastFigure.cloneNode(true);
    firstFigure.id = "fig1";
    firstFigure.style.right = "";
    firstFigure.style.left = "45px";
-   //articleElem.appendChild(firstFigure);
+
    articleElem.insertBefore(firstFigure, document.getElementById("fig2"));
+
    document.getElementsByTagName("img")[0].src = "images/IMG_0" + photoOrder[0] + "sm.jpg";
    document.getElementsByTagName("img")[4].src = "images/IMG_0" + photoOrder[4] + "sm.jpg";
-   figureCount = 5;
+   
    var numberButton = document.querySelector("#fiveButton p");
    numberButton.innerHTML = "Show fewer images";
+
    if (numberButton.addEventListener) {
       numberButton.removeEventListener("click", previewFive, false);
       numberButton.addEventListener("click", previewThree, false);
@@ -97,6 +102,7 @@ function previewFive() {
       numberButton.detachEvent("onclick", previewFive);
       numberButton.attachEvent("onclick", previewThree);
    }
+   figureCount = 5;
 }
 
 function previewThree() {
@@ -107,7 +113,7 @@ function previewThree() {
    figureCount = 3;
    numberButton.innerHTML = "Show more images";
    if (numberButton.addEventListener) {
-      numberButton.removeEventListener("click", previewthree, false);
+      numberButton.removeEventListener("click", previewThree, false);
       numberButton.addEventListener("click", previewFive, false);
    } else if (numberButton.attachEvent) {
       numberButton.detachEvent("onclick", previewThree);
@@ -125,7 +131,6 @@ function zoomFig() {
    var winOptions = "width=960,height=600,";
    winOptions += ",left=" + winLeft;
    winOptions += ",top=" + winTop;
-
    var zoomWindow = window.open("zoom.html", "zoomwin", "width=960,height=600");
    zoomWindow.focus();
 }
